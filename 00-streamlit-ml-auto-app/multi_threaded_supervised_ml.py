@@ -4,9 +4,6 @@ Created on Thu Dec  1 00:15:38 2022
 
 @author: Yann
 """
-
-# Original Author: Shankar Rao Pandala <shankar.pandala@live.com>
-
 import numpy as np
 import pandas as pd
 import time
@@ -29,27 +26,17 @@ import xgboost
 import catboost
 import lightgbm
 import imblearn.ensemble 
-#import sklearn.svm
 
 warnings.filterwarnings("ignore")
 
 removed_classifiers = [
     "ClassifierChain",
-    # "ComplementNB",
-    # "GradientBoostingClassifier",
     "GaussianProcessClassifier",
-    # "HistGradientBoostingClassifier",
-    # "MLPClassifier",
-    # "LogisticRegressionCV", 
     "MultiOutputClassifier", 
-    # "MultinomialNB", 
     "OneVsOneClassifier",
     "OneVsRestClassifier",
     "OutputCodeClassifier",
     "RadiusNeighborsClassifier",
-    # "VotingClassifier",
-    # "NuSVC",
-    #"SVC",
     "CalibratedClassifierCV",
 ]
 
@@ -58,7 +45,6 @@ removed_regressors = [
     "ARDRegression", 
     "CCA", 
     "IsotonicRegression", 
-    # "StackingRegressor",
     "MultiOutputRegressor", 
     "MultiTaskElasticNet", 
     "MultiTaskElasticNetCV", 
@@ -68,8 +54,6 @@ removed_regressors = [
     "PLSRegression", 
     "RadiusNeighborsRegressor", 
     "RegressorChain", 
-    # "VotingRegressor", 
-    # 'NuSVR',
     'SVR',
     'GaussianProcessRegressor',
     'KernelRidge',
@@ -100,13 +84,10 @@ CLASSIFIERS.append(('BalancedBaggingClassifier', imblearn.ensemble.BalancedBaggi
 CLASSIFIERS.append(('EasyEnsembleClassifier', imblearn.ensemble.EasyEnsembleClassifier))
 CLASSIFIERS.append(('RUSBoostClassifier', imblearn.ensemble.RUSBoostClassifier))
 CLASSIFIERS.append(('BalancedRandomForestClassifier', imblearn.ensemble.BalancedRandomForestClassifier))
-#CLASSIFIERS.append(('OneClassSVM', sklearn.svm.OneClassSVM))
-# CLASSIFIERS.append(("H2ORandomForestEstimator", h2o.estimators.H2ORandomForestEstimator)) # To be studied
 CLASSIFIERS.sort()
 
 numeric_transformer = Pipeline(
     steps=[("imputer", SimpleImputer(strategy="mean")), ("scaler", StandardScaler())]
-    # steps=[("imputer", SimpleImputer(strategy="mean")), ("scaler", MinMaxScaler())]
 )
 
 categorical_transformer_low = Pipeline(
@@ -123,26 +104,7 @@ categorical_transformer_high = Pipeline(
     ]
 )
 
-
 def get_card_split(df, cols, n=11):
-    """
-    Splits categorical columns into 2 lists based on cardinality (i.e # of unique values)
-    Parameters
-    ----------
-    df : Pandas DataFrame
-        DataFrame from which the cardinality of the columns is calculated.
-    cols : list-like
-        Categorical columns to list
-    n : int, optional (default=11)
-        The value of 'n' will be used to split columns.
-    Returns
-    -------
-    card_low : list-like
-        Columns with cardinality < n
-    card_high : list-like
-        Columns with cardinality >= n
-    """
-    
     cond = df[cols].nunique() > n
     card_high = cols[cond]
     card_low = cols[~cond]
@@ -156,7 +118,7 @@ def get_numeric_categorical_features(df):
     categorical_features = df.select_dtypes(include=["object"]).columns
     return numeric_features, categorical_features
 
-class EnhancedLazyModel(ABC):
+class MultiThreadedModel(ABC):
     def __init__(
         self,
         random_state=42,
@@ -353,7 +315,7 @@ class EnhancedLazyModel(ABC):
             
         print(f'\nALL DONE in {round(time.time()-s)} seconds !')
     
-class EnhancedLazyRegressor(EnhancedLazyModel):
+class MultiThreadedRegressor(MultiThreadedModel):
         
     def _init_fit(self):
         
@@ -378,9 +340,7 @@ class EnhancedLazyRegressor(EnhancedLazyModel):
         
     def _add_metrics(self, name, y_train, Y_train_pred, y_test, Y_test_pred, X_train, X_test, train_time):
         r_squared = r2_score(y_train, Y_train_pred)
-        adj_rsquared = adjusted_rsquared(
-            r_squared, X_train.shape[0], X_train.shape[1]
-        )
+        adj_rsquared = adjusted_rsquared(r_squared, X_train.shape[0], X_train.shape[1])
         rmse = np.sqrt(mean_squared_error(y_train, Y_train_pred))
 
         self.train_names.append(name)
@@ -389,11 +349,8 @@ class EnhancedLazyRegressor(EnhancedLazyModel):
         self.train_RMSE.append(rmse)
         self.train_TIME.append(round(train_time, 2))
         
-        # Transform the data, and apply predict with the final estimator.
         r_squared = r2_score(y_test, Y_test_pred)
-        adj_rsquared = adjusted_rsquared(
-            r_squared, X_test.shape[0], X_test.shape[1]
-        )
+        adj_rsquared = adjusted_rsquared(r_squared, X_test.shape[0], X_test.shape[1])
         rmse = np.sqrt(mean_squared_error(y_test, Y_test_pred))
 
         self.test_names.append(name)
@@ -423,7 +380,7 @@ class EnhancedLazyRegressor(EnhancedLazyModel):
             )
         
 
-class EnhancedLazyClassifier(EnhancedLazyModel):
+class MultiThreadedClassifier(MultiThreadedModel):
         
     def _init_fit(self):
 
@@ -473,7 +430,6 @@ class EnhancedLazyClassifier(EnhancedLazyModel):
         self.train_TIME.append(round(train_time, 2))
         self.train_PR_AUC.append(pr_auc)
         
-        # Transform the data, and apply predict with the final estimator.
         accuracy = accuracy_score(y_test, Y_test_pred, normalize=True)
         b_accuracy = balanced_accuracy_score(y_test, Y_test_pred)
         try:

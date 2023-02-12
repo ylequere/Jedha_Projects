@@ -2,13 +2,12 @@
 
 import streamlit as st
 import pandas as pd
-from enhanced_lazy_supervized import EnhancedLazyClassifier, EnhancedLazyRegressor, CLASSIFIERS, REGRESSORS, get_numeric_categorical_features
+from multi_threaded_supervised_ml import MultiThreadedClassifier, MultiThreadedRegressor, CLASSIFIERS, REGRESSORS, get_numeric_categorical_features
 
-import sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import  OneHotEncoder, StandardScaler, MinMaxScaler
+from sklearn.preprocessing import  OneHotEncoder, MinMaxScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.datasets import load_breast_cancer, fetch_california_housing 
 
@@ -67,22 +66,6 @@ def build_model():
     else:
         X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=split_size, random_state=seed_number)
 
-    # print("Before SMOTE, X_train contains",  X_train.shape[0], "rows.")
-    # print("Starting SMOTE ...")
-    # from imblearn.over_sampling import SMOTE
-    # smote = SMOTE(random_state=seed_number)
-    # X_train, Y_train = smote.fit_resample(X_train, Y_train)
-    # print("After SMOTE, X_train contains",  X_train.shape[0], "rows.")
-
-    # print("Before undersampling, X_train contains",  X_train.shape[0], "rows.")
-    # df_fraud = df[df['fraud_flag'] == 1]
-    # df_not_fraud = df[df['fraud_flag'] == 0]
-    # df_not_fraud = df_not_fraud.sample(df_fraud.shape[0])
-    # df_balanced = pd.concat([df_fraud, df_not_fraud])
-    # X_train = df_balanced.drop(columns=target_column, axis=1)
-    # Y_train = df_balanced.loc[:,target_column]
-    # print("After undersampling, X_train contains",  X_train.shape[0], "rows.")
-
     # Data normalization
     preprocessor = None
     if normalization_type == 'Custom':
@@ -102,11 +85,11 @@ def build_model():
 
     # Building models
     if predict_class == 'Regressor':
-        class_= EnhancedLazyRegressor
+        class_= MultiThreadedRegressor
         models_ = REGRESSORS
         y_label_encoder = False
     else:
-        class_= EnhancedLazyClassifier
+        class_= MultiThreadedClassifier
         models_ = CLASSIFIERS
         y_label_encoder = True
     models = class_(seed_number, models_, multithread_num_workers, stacking_estimators_choice, [first_stacking_estimator]+[second_stacking_estimator]+[third_stacking_estimator]+[final_stacking_estimator]
@@ -200,7 +183,7 @@ def pdfdownload(plt, filename):
     href = f'<a href="data:image/pdf;base64,{b64}" download={filename}>Download {filename} File</a>'
     return href
 
-@st.cache(suppress_st_warning=True)  # 👉👈
+@st.cache_data()  # 👉👈
 def get_df_from_csv(uploaded_file):
     return pd.read_csv(uploaded_file)
 
