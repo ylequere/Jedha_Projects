@@ -183,7 +183,7 @@ def pdfdownload(plt, filename):
     href = f'<a href="data:image/pdf;base64,{b64}" download={filename}>Download {filename} File</a>'
     return href
 
-@st.cache_data()  # 👉👈
+@st.cache(suppress_st_warning=True)
 def get_df_from_csv(uploaded_file):
     return pd.read_csv(uploaded_file)
 
