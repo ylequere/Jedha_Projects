@@ -58,6 +58,8 @@ removed_regressors = [
     'GaussianProcessRegressor',
     'KernelRidge',
     'QuantileRegressor',
+    "MLPRegressor", # TOO LONG TO EXECUTE WITH 400 000 rows
+    "NuSVR", # TOO LONG TO EXECUTE WITH 400 000 rows
 ]
 
 CLASSIFIERS = [
@@ -74,7 +76,7 @@ REGRESSORS = [
 
 REGRESSORS.append(("XGBRegressor", xgboost.XGBRegressor))
 REGRESSORS.append(("LGBMRegressor", lightgbm.LGBMRegressor))
-REGRESSORS.append(('CatBoostRegressor',catboost.CatBoostRegressor))
+# REGRESSORS.append(('CatBoostRegressor',catboost.CatBoostRegressor)) # TOO LONG TO EXECUTE WITH 400 000 rows
 REGRESSORS.sort()
 
 CLASSIFIERS.append(("XGBClassifier", xgboost.XGBClassifier))
