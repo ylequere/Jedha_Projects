@@ -1,0 +1,10 @@
+Commandes Heroku:
+
+# Construire l'image Docker:
+heroku container:push web -a streamlit-ml-auto
+
+# Pousser l'image Docker vers Heroku
+heroku container:release web -a streamlit-ml-auto
+
+# Vérifier le log d'execution
+heroku logs --tail -a
