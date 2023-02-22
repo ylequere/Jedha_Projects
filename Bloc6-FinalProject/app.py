@@ -46,22 +46,13 @@ st.markdown("""
         </style>
         """, unsafe_allow_html=True)
 
-def get_model():
-    return XGBRegressor().load_model('./RealEstate_PARIS_FR_2022.xgbmodel')
-
-def get_preprocessor():
-    return load(open('./preprocessor.dmp', 'rb'))
-
-def get_geoloc():
-    return Nominatim(user_agent="MyAppRE75")
-
 @st.cache_data
 def get_full_dataset():
-    return pd.read_csv('./TempFiles/RealEstate_PARIS_FR_2022.csv')
+    return pd.read_csv('TempFiles/RealEstate_PARIS_FR_2022.csv')
 
 model = XGBRegressor()
-model.load_model('./RealEstate_PARIS_FR_2022.xgbmodel')
-preprocessor = get_preprocessor()
+model.load_model('RealEstate_PARIS_FR_2022.xgbmodel')
+preprocessor = load(open('preprocessor.dmp', 'rb'))
 df_full_dataset = get_full_dataset()
 
 nature_mutation = st.sidebar.selectbox('Nature mutation', ('Vente', "Vente en l'état futur d'achèvement", 'Vente terrain à bâtir'))
@@ -73,7 +64,7 @@ adresse = st.sidebar.text_input('Adresse', '8 avenue des champs elysees PARIS FR
 # st.header("ESTIMATION D'UN BIEN IMMOBILIER A PARIS INTRAMUROS")
 start_clicked = st.sidebar.button('👉 Calculer estimation 👈')
 if start_clicked:
-    loc = get_geoloc().geocode(adresse)
+    loc = Nominatim(user_agent="MyAppRE75").geocode(adresse)
     compute = loc is not None
     if compute:
         df_real_test = pd.DataFrame({'Nature mutation':[nature_mutation]
