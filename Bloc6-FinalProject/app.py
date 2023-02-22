@@ -50,6 +50,10 @@ st.markdown("""
 def get_full_dataset():
     return pd.read_csv('TempFiles/RealEstate_PARIS_FR_2022.csv')
 
+
+import os
+print(os.listdir('.'))
+
 model = XGBRegressor()
 model.load_model('RealEstate_PARIS_FR_2022.xgbmodel')
 preprocessor = load(open('preprocessor.dmp', 'rb'))
