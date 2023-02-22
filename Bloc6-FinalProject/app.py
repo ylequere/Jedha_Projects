@@ -84,27 +84,31 @@ if start_clicked:
 
         df_real_test['Valeur fonciere'] = Y_real_test
         df_real_test['Valeur fonciere'] = df_real_test['Valeur fonciere'].apply(lambda x : '{:,} €'.format(round(x)).replace(',', ' '))
+        df_real_test['Surface_m'] = df_real_test['Surface']
+        df_real_test['Surface'] = df_real_test['Surface'].apply(lambda x : '{:.0f} m²'.format(x))
         df_real_test['color'] = 'green'
 
         # Filtering sales around the lat/lon of desired real-estate
         df_full_dataset = df_full_dataset[(abs(df_full_dataset['Latitude'] - loc.point[0]) < 0.005) &  (abs(df_full_dataset['Longitude'] - loc.point[1]) < 0.01)]
         df_full_dataset['Valeur fonciere'] = df_full_dataset['Valeur fonciere'].apply(lambda x : '{:,} €'.format(round(x)).replace(',', ' '))
+        df_full_dataset['Surface_m'] = df_full_dataset['Surface']
+        df_full_dataset['Surface'] = df_full_dataset['Surface'].apply(lambda x : '{:.0f} m²'.format(x))
         df_full_dataset['color'] = 'blue'
 
         fig2 = px.scatter_mapbox(df_full_dataset, lat="Latitude", lon="Longitude"
                                 , zoom=15
                                 , width=1200, height=700, hover_name='Valeur fonciere'
-                                , hover_data=['Surface', 'Nombre pieces principales']
+                                , hover_data={'Nature mutation':False, 'Surface_m':False, 'Surface':True, 'Nombre pieces principales':True, 'Latitude':False, 'Longitude':False}
                                 , color = 'color', color_discrete_map='identity'
-                                , size='Surface'
+                                , size='Surface_m'
                                 , mapbox_style="open-street-map"
                                 )
         
         fig = px.scatter_mapbox(df_real_test, lat="Latitude", lon="Longitude"
                                 , zoom=15
                                 , width=1200, height=700, hover_name='Valeur fonciere'
-                                , hover_data=['Surface', 'Nombre pieces principales']
-                                , size='Surface'
+                                , hover_data={'Nature mutation':False, 'Surface_m':False, 'Surface':True, 'Nombre pieces principales':True, 'Latitude':False, 'Longitude':False}
+                                , size='Surface_m'
                                 , color = 'color', color_discrete_map='identity'
                                 , mapbox_style="open-street-map", opacity=1
                                 )
