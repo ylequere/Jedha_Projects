@@ -1,36 +1,36 @@
 Id,location,pop,perceived_temperature,display_name,lat,lon
-0,Aigues Mortes,25,16,"Aigues-Mortes, Nîmes, Gard, Occitanie, France métropolitaine, 30220, France",43.5658225,4.1912837
-1,Aix en Provence,15,15,"Aix-en-Provence, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur, France métropolitaine, France",43.5298424,5.4474738
-2,Amiens,33,12,"Amiens, Somme, Hauts-de-France, France métropolitaine, 80090, France",49.8941708,2.2956951
-3,Annecy,24,10,"Annecy, Haute-Savoie, Auvergne-Rhône-Alpes, France métropolitaine, France",45.8992348,6.1288847
-4,Ariege,23,7,"Ariège, Occitanie, France métropolitaine, France",42.9455368,1.4065544156065486
-5,Avignon,21,15,"Avignon, Vaucluse, Provence-Alpes-Côte d'Azur, France métropolitaine, France",43.9492493,4.8059012
-6,Bayeux,45,11,"Bayeux, Calvados, Normandie, France métropolitaine, 14400, France",49.2764624,-0.7024738
-7,Bayonne,39,16,"Bayonne, Pyrénées-Atlantiques, Nouvelle-Aquitaine, France métropolitaine, 64100, France",43.4945144,-1.4736657
-8,Besancon,26,10,"Besançon, Doubs, Bourgogne-Franche-Comté, France métropolitaine, 25000, France",47.2380222,6.0243622
-9,Biarritz,38,15,"Biarritz, Bayonne, Pyrénées-Atlantiques, Nouvelle-Aquitaine, France métropolitaine, 64200, France",43.471143749999996,-1.552726590666314
-10,Bormes les Mimosas,9,16,"Bormes-les-Mimosas, Toulon, Var, Provence-Alpes-Côte d'Azur, France métropolitaine, 83230, France",43.1506968,6.3419285
-11,Carcassonne,20,14,"Carcassonne, Aude, Occitanie, France métropolitaine, 11000, France",43.2130358,2.3491069
-12,Cassis,16,16,"Cassis, Marseille, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur, France métropolitaine, 13260, France",43.2140359,5.5396318
-13,Chateau du Haut Koenigsbourg,8,8,"Château du Haut-Kœnigsbourg, Chemin fermé suite  à travaux, Château du Haut-Kœnigsbourg, Orschwiller, Sélestat-Erstein, Bas-Rhin, Grand Est, France métropolitaine, 67600, France",48.249489800000006,7.34429620253195
-14,Collioure,16,17,"Collioure, Céret, Pyrénées-Orientales, Occitanie, France métropolitaine, 66190, France",42.52505,3.0831554
-15,Colmar,6,11,"Colmar, Colmar-Ribeauvillé, Haut-Rhin, Grand Est, France métropolitaine, 68000, France",48.0777517,7.3579641
-16,Dijon,20,10,"Dijon, Côte-d'Or, Bourgogne-Franche-Comté, France métropolitaine, 21000, France",47.3215806,5.0414701
-17,Eguisheim,7,11,"Eguisheim, Colmar-Ribeauvillé, Haut-Rhin, Grand Est, France métropolitaine, 68420, France",48.0447968,7.3079618
-18,Gorges du Verdon,10,10,"Gorges du Verdon, Route des Crêtes, Les Ferrailles, La Palud-sur-Verdon, Castellane, Alpes-de-Haute-Provence, Provence-Alpes-Côte d'Azur, France métropolitaine, 04120, France",43.7496562,6.3285616
-19,Grenoble,24,12,"Grenoble, Isère, Auvergne-Rhône-Alpes, France métropolitaine, France",45.1875602,5.7357819
-20,La Rochelle,37,14,"La Rochelle, Charente-Maritime, Nouvelle-Aquitaine, France métropolitaine, 17000, France",46.1591126,-1.1520434
-21,Le Havre,55,12,"Le Havre, Seine-Maritime, Normandie, France métropolitaine, France",49.4938975,0.1079732
-22,Lille,39,11,"Lille, Nord, Hauts-de-France, France métropolitaine, France",50.6365654,3.0635282
-23,Lyon,24,12,"Lyon, Métropole de Lyon, Circonscription départementale du Rhône, Auvergne-Rhône-Alpes, France métropolitaine, France",45.7578137,4.8320114
-24,Marseille,17,16,"Marseille, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur, France métropolitaine, 13000, France",43.2961743,5.3699525
-25,Mont Saint Michel,54,12,"Mont Saint-Michel, Plateforme du Saut-­Gaultier, Le Mont-Saint-Michel, Avranches, Manche, Normandie, France métropolitaine, 50170, France",48.6359541,-1.511459954959514
-26,Montauban,26,14,"Montauban, Tarn-et-Garonne, Occitanie, France métropolitaine, 82000, France",44.0175835,1.3549991
-27,Nimes,23,15,"Nîmes, Gard, Occitanie, France métropolitaine, France",43.8374249,4.3600687
-28,Paris,19,12,"Paris, Île-de-France, France métropolitaine, France",48.8588897,2.3200410217200766
-29,Rouen,47,12,"Rouen, Seine-Maritime, Normandie, France métropolitaine, France",49.4404591,1.0939658
-30,Saintes Maries de la mer,22,16,"Saintes-Maries-de-la-Mer, Arles, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur, France métropolitaine, 13460, France",43.4522771,4.4287172
-31,St Malo,56,13,"Saint-Malo, Ille-et-Vilaine, Bretagne, France métropolitaine, 35400, France",48.649518,-2.0260409
-32,Strasbourg,9,11,"Strasbourg, Bas-Rhin, Grand Est, France métropolitaine, France",48.584614,7.7507127
-33,Toulouse,21,14,"Toulouse, Haute-Garonne, Occitanie, France métropolitaine, France",43.6044622,1.4442469
-34,Uzes,23,14,"Uzès, Nîmes, Gard, Occitanie, France métropolitaine, 30700, France",44.0121279,4.4196718
+0,Aigues Mortes,44,6,"Aigues-Mortes, Nîmes, Gard, Occitanie, France métropolitaine, 30220, France",43.5658225,4.1912837
+1,Aix en Provence,41,7,"Aix-en-Provence, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur, France métropolitaine, France",43.5298424,5.4474738
+2,Amiens,4,1,"Amiens, Somme, Hauts-de-France, France métropolitaine, France",49.8941708,2.2956951
+3,Annecy,6,5,"Annecy, Haute-Savoie, Auvergne-Rhône-Alpes, France métropolitaine, France",45.8992348,6.1288847
+4,Ariege,42,-4,"Ariège, Occitanie, France métropolitaine, France",42.9455368,1.4065544156065486
+5,Avignon,43,5,"Avignon, Vaucluse, Provence-Alpes-Côte d'Azur, France métropolitaine, France",43.9492493,4.8059012
+6,Bayeux,9,1,"Bayeux, Calvados, Normandie, France métropolitaine, 14400, France",49.2764624,-0.7024738
+7,Bayonne,21,4,"Bayonne, Pyrénées-Atlantiques, Nouvelle-Aquitaine, France métropolitaine, 64100, France",43.4945144,-1.4736657
+8,Besancon,4,3,"Besançon, Doubs, Bourgogne-Franche-Comté, France métropolitaine, 25000, France",47.2380222,6.0243622
+9,Biarritz,22,4,"Biarritz, Bayonne, Pyrénées-Atlantiques, Nouvelle-Aquitaine, France métropolitaine, 64200, France",43.471143749999996,-1.552726590666314
+10,Bormes les Mimosas,32,8,"Bormes-les-Mimosas, Toulon, Var, Provence-Alpes-Côte d'Azur, France métropolitaine, 83230, France",43.1506968,6.3419285
+11,Carcassonne,45,0,"Carcassonne, Aude, Occitanie, France métropolitaine, 11000, France",43.2130358,2.3491069
+12,Cassis,38,7,"Cassis, Marseilla, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur, France métropolitaine, 13260, France",43.2140359,5.5396318
+13,Chateau du Haut Koenigsbourg,5,-1,"Château du Haut-Kœnigsbourg, Chemin fermé suite  à travaux, Château du Haut-Kœnigsbourg, Orschwiller, Sélestat-Erstein, Bas-Rhin, Grand Est, France métropolitaine, 67600, France",48.249489800000006,7.34429620253195
+14,Collioure,38,3,"Collioure, Céret, Pyrénées-Orientales, Occitanie, France métropolitaine, 66190, France",42.52505,3.0831554
+15,Colmar,11,2,"Colmar, Colmar-Ribeauvillé, Haut-Rhin, Grand Est, France métropolitaine, 68000, France",48.0777517,7.3579641
+16,Dijon,0,2,"Dijon, Côte-d'Or, Bourgogne-Franche-Comté, France métropolitaine, 21000, France",47.3215806,5.0414701
+17,Eguisheim,11,2,"Eguisheim, Colmar-Ribeauvillé, Haut-Rhin, Grand Est, France métropolitaine, 68420, France",48.0447968,7.3079618
+18,Gorges du Verdon,38,6,"Gorges du Verdon, Route de la Maline, Les Ferrailles, La Palud-sur-Verdon, Castellane, Alpes-de-Haute-Provence, Provence-Alpes-Côte d'Azur, France métropolitaine, 04120, France",43.7496562,6.3285616
+19,Grenoble,9,6,"Grenoble, Isère, Auvergne-Rhône-Alpes, France métropolitaine, France",45.1875602,5.7357819
+20,La Rochelle,20,1,"La Rochelle, Charente-Maritime, Nouvelle-Aquitaine, France métropolitaine, 17000, France",46.1591126,-1.1520434
+21,Le Havre,6,1,"Le Havre, Seine-Maritime, Normandie, France métropolitaine, France",49.4938975,0.1079732
+22,Lille,0,1,"Lille, Nord, Hauts-de-France, France métropolitaine, France",50.6365654,3.0635282
+23,Lyon,3,4,"Lyon, Métropole de Lyon, Rhône, Auvergne-Rhône-Alpes, France métropolitaine, France",45.7578137,4.8320114
+24,Marseille,40,7,"Marseilla, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur, France métropolitaine, 13000, France",43.2961743,5.3699525
+25,Mont Saint Michel,1,2,"Mont Saint-Michel, Terrasse de l'Abside, Le Mont-Saint-Michel, Avranches, Manche, Normandie, France métropolitaine, 50170, France",48.6359541,-1.511459954959514
+26,Montauban,33,2,"Montauban, Tarn-et-Garonne, Occitanie, France métropolitaine, 82000, France",44.0175835,1.3549991
+27,Nimes,44,5,"Nîmes, Gard, Occitanie, France métropolitaine, France",43.8374249,4.3600687
+28,Paris,0,2,"Paris, Île-de-France, France métropolitaine, France",48.8588897,2.3200410217200766
+29,Rouen,7,2,"Rouen, Seine-Maritime, Normandie, France métropolitaine, France",49.4404591,1.0939658
+30,Saintes Maries de la mer,44,5,"Saintes-Maries-de-la-Mer, Arles, Bouches-du-Rhône, Provence-Alpes-Côte d'Azur, France métropolitaine, 13460, France",43.4522771,4.4287172
+31,St Malo,5,1,"Saint-Malo, Ille-et-Vilaine, Bretagne, France métropolitaine, 35400, France",48.649518,-2.0260409
+32,Strasbourg,5,2,"Strasbourg, Bas-Rhin, Grand Est, France métropolitaine, France",48.584614,7.7507127
+33,Toulouse,44,1,"Toulouse, Haute-Garonne, Occitanie, France métropolitaine, France",43.6044622,1.4442469
+34,Uzes,43,4,"Uzès, Nîmes, Gard, Occitanie, France métropolitaine, 30700, France",44.0121279,4.4196718
