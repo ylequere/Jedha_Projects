@@ -63,13 +63,13 @@ nature_mutation = st.sidebar.selectbox('Nature mutation', ('Vente', "Vente en l'
 type_local = st.sidebar.selectbox('Type local', ('Appartement', 'Maison'))
 nb_pieces = st.sidebar.slider('Nombre pieces principales', 1, 8, 2, 1)
 surface = st.sidebar.slider('Surface', 10, 260, 80, 2)
-adresse = st.sidebar.text_input('Adresse', '8 avenue des champs elysees PARIS FRANCE')
+adresse = st.sidebar.text_input('Adresse', '8 avenue Gambetta PARIS FRANCE')
 
 # st.header("ESTIMATION D'UN BIEN IMMOBILIER A PARIS INTRAMUROS")
 start_clicked = st.sidebar.button('👉 Calculer estimation 👈')
 if start_clicked:
     loc = Nominatim(user_agent="MyAppRE75").geocode(adresse)
-    compute = loc is not None
+    compute = (loc is not None) and ('PARIS' in adresse.upper())
     if compute:
         df_real_test = pd.DataFrame({'Nature mutation':[nature_mutation]
                                       , 'Type local':[type_local]
