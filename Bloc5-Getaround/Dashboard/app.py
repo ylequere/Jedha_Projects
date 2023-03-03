@@ -14,7 +14,7 @@ sub_folder = sys.argv[0].replace('app.py', '')
 #---------------------------------#
 # Page layout
 ## Page expands to full width
-im = Image.open("./getaround.ico")
+im = Image.open(sub_folder + "getaround.ico")
 st.set_page_config(
     page_icon=im,
     page_title='Getaround delay dashboard',
@@ -34,7 +34,7 @@ st.markdown(custom_styles, unsafe_allow_html=True)
 
 col1, col2 = st.columns(2)
 with col1:
-    st.image('./getaround.png')
+    st.image(sub_folder + 'getaround.png')
 with col2:    
     st.title("DELAY DASHBOARD")
 
