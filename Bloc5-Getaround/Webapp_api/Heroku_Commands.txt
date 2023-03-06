@@ -1,0 +1,4 @@
+heroku container:login
+heroku create getaround-api-ylequere
+heroku container:push web -a getaround-api-ylequere
+heroku container:release web -a getaround-api-ylequere
