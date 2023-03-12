@@ -5,9 +5,9 @@ import pandas as pd
 from xgboost.sklearn import XGBRegressor
 from pickle import load
 from geopy.geocoders import Nominatim
-import warnings
 import plotly.express as px
 import sys
+import altair as alt
 
 # Getting the subfolder in which app.py is executed
 sub_folder = sys.argv[0].replace('app.py', '')
@@ -30,6 +30,8 @@ custom_styles= """
 }
 .main > .block-container {
     padding-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .main > footer {
@@ -88,7 +90,7 @@ if start_clicked:
 
         fig2 = px.scatter_mapbox(df_full_dataset, lat="Latitude", lon="Longitude"
                                 , zoom=15
-                                , width=1200, height=700, hover_name='Valeur fonciere'
+                                , height=600, hover_name='Valeur fonciere'
                                 , hover_data={'Nature mutation':False, 'Surface_m':False, 'Surface':True, 'Nombre pieces principales':True, 'Latitude':False, 'Longitude':False}
                                 , color = 'color', color_discrete_map='identity'
                                 , size='Surface_m'
@@ -98,7 +100,7 @@ if start_clicked:
         
         fig = px.scatter_mapbox(df_real_test, lat="Latitude", lon="Longitude"
                                 , zoom=15
-                                , width=1200, height=700, hover_name='Valeur fonciere'
+                                , height=600, hover_name='Valeur fonciere'
                                 , hover_data={'Nature mutation':False, 'Surface_m':False, 'Surface':True, 'Nombre pieces principales':True, 'Latitude':False, 'Longitude':False}
                                 , size='Surface_m'
                                 , color = 'color', color_discrete_map='identity'
@@ -124,36 +126,43 @@ if start_clicked:
             secteur_valeur_fonciere_mean = df_full_dataset['Valeur fonciere raw'].mean()
             valeur_fonciere_delta = estimate_raw - secteur_valeur_fonciere_mean
 
-            st.metric(label="Valeur foncière moyenne"
-                    , value="{:,} €".format(round(secteur_valeur_fonciere_mean)).replace(',', ' ')
-                    , delta="{:,} €".format(round(valeur_fonciere_delta)).replace(',', ' ')
-                    )
-
             secteur_surface_m_mean = df_full_dataset['Surface_m'].mean()
             surface_m_delta = surface - secteur_surface_m_mean
+
+            secteur_valeur_surface_m_mean = secteur_valeur_fonciere_mean / secteur_surface_m_mean
+            valeur_surface_m_delta = (estimate_raw / surface) - secteur_valeur_surface_m_mean
+
+            st.metric(label="Prix moyen au m²"
+                    , value="{:,} €".format(round(secteur_valeur_surface_m_mean)).replace(',', ' ')
+                    , delta="{:,} €".format(round(valeur_surface_m_delta)).replace(',', ' ')
+                    )
 
             st.metric(label="Surface moyenne"
                       , value='{:.00f} m²'.format(round(secteur_surface_m_mean, 2))
                       , delta='{:.00f} m²'.format(round(surface_m_delta, 2))
                       )
 
-            secteur_nb_pieces_mean = df_full_dataset['Nombre pieces principales'].mean()
-            nb_pieces_delta = nb_pieces - secteur_nb_pieces_mean
-
-            st.metric(label="Nb moyen de pièces"
-                      , value=round(secteur_nb_pieces_mean, 2)
-                      , delta=round(nb_pieces_delta, 2)
-                      )
-
+            # https://altair-viz.github.io/user_guide/customization.html
+            histogram = alt.Chart(
+                df_full_dataset).mark_bar(size=20).encode(
+                    alt.X('Nombre pieces principales:N', title='Pièces principales', axis=alt.Axis(format='.1', tickMinStep=1, labelAngle=0), scale=alt.Scale(zero=False)),
+                    alt.Y('count()', title='Nombre de ventes'),
+                    color=alt.Color('Nombre pieces principales', legend=None),
+                    tooltip={"field": "__count", "title": "Nombre de ventes"}
+                ).configure_axis(
+                   grid=False
+                ).configure_view(
+                   strokeWidth=0
+                ).interactive()
+            st.altair_chart(histogram, use_container_width=True)
     else:
         st.header("Géolocalisation impossible, veuillez indiquer une autre adresse.")
-
 else:
     fig = px.scatter_mapbox(pd.DataFrame({'lat':[48.86256014982167], 'lon':[2.341932519526535]})
                             , lat='lat', lon='lon'
                             , hover_data={'lat':False, 'lon':False}
                             , zoom=12
-                            , width=1200, height=700
+                            , height=600
                             , mapbox_style=map_style
                             , opacity=1
                             )
